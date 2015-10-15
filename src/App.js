@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { SUPER_NICE } from './colors';
 import Youtube from './containers/Youtube';
 
 export class App extends Component {

@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-fetch';
+
 const REQUEST = 'youtube/REQUEST';
 const RECEIVE = 'youtube/RECEIVE';
 const REQUEST_FAILURE = 'youtube/REQUEST_FAILURE';
