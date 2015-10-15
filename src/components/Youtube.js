@@ -11,11 +11,11 @@ class Youtube extends Component {
   }
   render() {
     const {items, isFetching} = this.props;
-    const headerMsg = `${isFetching ? 'Loading ' : '' }Videos`;
+    const headerMsg = 'Loading videos...';
     return (
       <div>
-        <h3>{headerMsg}</h3>
-        {items.map(item => <Video {...item} key={item.videoId} />)}
+        { isFetching ? <h3>{headerMsg}</h3> : false }
+        { items.map(item => <Video {...item} key={item.videoId} />) }
       </div>
     );
   }
