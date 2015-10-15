@@ -5,7 +5,7 @@ function Video({thumbnail, videoId, title}) {
   return (
     <div className="youtube-thumb thumbnail init-colorbox-load-processed cboxElement">
       <a className="colorbox-load" href={url} title={title}>
-        <img src={thumbnail.url} width={thumbnail.width} height={thumbnail.height} alt={title} />
+        <img src={thumbnail.url} width="130" alt={title} />
       </a>
     </div>
   );
