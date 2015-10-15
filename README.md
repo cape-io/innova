@@ -1,14 +1,7 @@
-React Transform Boilerplate
+Innova React Playground
 =====================
 
-[![Join the chat at https://gitter.im/cape-io/boiler](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/cape-io/boiler?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-I was feeling so stupid I had to start over again...
-
-I started with a basic stateless component that updates without a browser refresh.
-Next I added some form and input componetns that I was working on previously in https://github.com/cape-io/cape-forms-demo.
-
-I added in Redux for the simple single input field.
+So far just youtube block for front page.
 
 Note: You'll need to allow pop-up windows for this page to see the devtools sidebar thingy.
 
