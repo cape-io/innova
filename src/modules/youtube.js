@@ -97,6 +97,13 @@ function checkStatus(response) {
   };
 }
 
+// Get the id for a username
+// https://www.googleapis.com/youtube/v3/channels?part=snippet&forUsername=innovadotmu&key={YOUR_API_KEY}
+// Get uploads.
+// GET https://www.googleapis.com/youtube/v3/channels?part=contentDetails&forUsername=innovadotmu&key={YOUR_API_KEY}
+// Get playlist ids.
+// GET https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UC1dLyBjCAFz9tNxEr47zIEA&key={YOUR_API_KEY}
+// https://www.googleapis.com/youtube/v3/playlists?
 export function fetchItems({playlistId, key, maxResults}) {
   const url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&';
   const args = `playlistId=${playlistId}&key=${key}&maxResults=${maxResults}`;

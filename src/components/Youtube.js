@@ -2,9 +2,11 @@ import React, { Component, PropTypes } from 'react';
 import Video from './Video';
 
 class Youtube extends Component {
+  // innova channelId UC1dLyBjCAFz9tNxEr47zIEA
+  // ACF UUEC1Deur1BSCtznxH3nP2WQ
   componentDidMount() {
     this.props.fetchItems({
-      playlistId: 'UUEC1Deur1BSCtznxH3nP2WQ',
+      playlistId: 'UU1dLyBjCAFz9tNxEr47zIEA',
       key: 'AIzaSyDu7__FOqyJTEPC68dW_Oq-hwRySPZGpDI',
       maxResults: '3',
     });
