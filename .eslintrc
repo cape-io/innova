@@ -1,5 +1,9 @@
 {
-  "extends": "airbnb",
+  "extends": [
+    "eslint-config-airbnb",
+    "rackt",
+    "import/warnings"
+  ],
   "ecmaFeatures": {
     "jsx": true,
     "modules": true

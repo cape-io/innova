@@ -5,7 +5,10 @@ import {Provider} from 'react-redux';
 import { App } from './App';
 import configureStore from './configureStore';
 
-const store = configureStore();
+// Define our inital state object. This is created by drupal.
+const initialState = window.__data || {}
+
+const store = configureStore(initialState);
 
 render(
   <Provider store={store}>
