@@ -53,6 +53,7 @@
     "eslint-config-airbnb": "0.0.x",
     "eslint-config-import": "^0.9.1",
     "eslint-config-rackt": "^1.1.1",
+    "eslint-plugin-import": "^0.10.0",
     "eslint-plugin-react": "3.5.x",
     "express": "4.13.x",
     "node-libs-browser": "0.5.x",
