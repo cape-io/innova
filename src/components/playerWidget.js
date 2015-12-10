@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 
-class playerWidget extends Component {
+class PlayerWidget extends Component {
   play() {
     let { soundCloudAudio, playing } = this.props
     if (playing) {
@@ -27,8 +27,8 @@ class playerWidget extends Component {
     )
   }
 }
-playerWidget.propTypes = {
+PlayerWidget.propTypes = {
   track: PropTypes.object.isRequired,
   playing: PropTypes.bool.isRequired,
 }
-export default playerWidget
+export default PlayerWidget

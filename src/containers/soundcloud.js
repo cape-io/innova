@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { SoundPlayerContainer } from 'react-soundplayer/addons'
-import playerWidget from '../components/playerWidget'
+import PlayerWidget from '../components/PlayerWidget'
 
 
 class soundcloud extends Component {
@@ -11,7 +11,7 @@ class soundcloud extends Component {
           clientId="416cb3f3e2a04d5ec901dba6f94aaa49"
           resolveUrl="https://soundcloud.com/innovadotmu/06-sally-ann"
         >
-          <playerWidget />
+          <PlayerWidget />
         </SoundPlayerContainer>
         <p>Test</p>
       </div>
