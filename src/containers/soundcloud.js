@@ -13,7 +13,6 @@ class soundcloud extends Component {
         >
           <PlayerWidget />
         </SoundPlayerContainer>
-        <p>Test</p>
       </div>
     )
   }

@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import { PlayButton, Progress } from 'react-soundplayer/components'
 
 class PlayerWidget extends Component {
   play() {
@@ -10,7 +11,7 @@ class PlayerWidget extends Component {
     }
   }
   render() {
-    let { track, playing } = this.props
+    let { track, playing, currentTime, duration } = this.props
 
     if (!track) {
       return <div>Loading...</div>
@@ -18,17 +19,20 @@ class PlayerWidget extends Component {
 
     return (
       <div>
-          <h2>{track.title}</h2>
-          <h3>{track.user.username}</h3>
-          <button onClick={this.play.bind(this)}>
-              {playing ? 'Pause' : 'Play'}
-          </button>
+        <PlayButton {...this.props} />
+        <span className="track-title">{track.title}</span>
+        <Progress
+          className="mt1 mb1 rounded"
+          innerClassName="rounded-left"
+          value={currentTime / duration * 100 || 0}
+          {...this.props}
+        />
       </div>
     )
   }
 }
 PlayerWidget.propTypes = {
-  track: PropTypes.object.isRequired,
-  playing: PropTypes.bool.isRequired,
+  track: PropTypes.object,
+  playing: PropTypes.bool
 }
 export default PlayerWidget
