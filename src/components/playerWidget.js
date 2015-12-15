@@ -11,7 +11,7 @@ class PlayerWidget extends Component {
     }
   }
   render() {
-    let { track, playing, currentTime, duration } = this.props
+    const { track, currentTime, duration } = this.props
 
     if (!track) {
       return <div>Loading...</div>
