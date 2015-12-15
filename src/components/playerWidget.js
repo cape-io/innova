@@ -19,8 +19,13 @@ class PlayerWidget extends Component {
 
     return (
       <div>
-        <PlayButton className="sb-soundplayer-play-btn" {...this.props} />
-        <span className="track-title">{track.title}</span>
+        <PlayButton
+          {...this.props}
+          className="sb-soundplayer-play-btn"
+        />
+      <span className="track-title" style={{ paddingLeft: '10px' }}>
+          {track.title}
+        </span>
         <Progress
           className="mt1 mb1 rounded"
           innerClassName="rounded-left"
