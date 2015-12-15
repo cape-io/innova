@@ -7,7 +7,7 @@ import Soundcloud from './containers/soundcloud'
 // This is where we define computed fields (reselect module) or make other changes.
 // Which part of the Redux global state does our component want to receive as props?
 function mapStateToProps(state) {
-  const { frontPage, album } = state
+  const { frontPage, album } = state.settings
   return { frontPage, album }
 }
 
