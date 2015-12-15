@@ -7,21 +7,18 @@ import configureStore from './configureStore'
 
 const devEnv = !window.Drupal
 // Define our inital state object.
-const initialState = {
-  devEnv,
-  frontPage: true
-}
+const initialState = { settings: {} }
 // This is created by drupal.
 if (devEnv) {
-  initialState.album = {
+  initialState.settings.frontPage = true
+  initialState.settings.album = {
     soundcloudTrack: 'https://soundcloud.com/innovadotmu/epic-soda'
   }
 }
 else {
-  initialState.frontPage = window.Drupal.frontPage || false
-  initialState.album = window.Drupal.settings.album || {}
+  initialState.settings.frontPage = window.Drupal.frontPage || false
+  initialState.settings.album = window.Drupal.settings.album || {}
 }
-
 
 const store = configureStore(initialState)
 
