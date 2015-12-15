@@ -1,6 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-
 import { connect } from 'react-redux'
+
+import Youtube from './containers/Youtube'
+import Soundcloud from './containers/soundcloud'
 
 // This is where we define computed fields (reselect module) or make other changes.
 // Which part of the Redux global state does our component want to receive as props?
