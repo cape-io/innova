@@ -36,8 +36,10 @@ class PlayerWidget extends Component {
     )
   }
 }
+
 PlayerWidget.propTypes = {
   track: PropTypes.object,
   playing: PropTypes.bool
 }
+
 export default PlayerWidget

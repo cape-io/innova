@@ -34,6 +34,7 @@
   "homepage": "https://www.innova.mu",
   "dependencies": {
     "classnames": "^2.1.5",
+    "domready": "^1.0.8",
     "email-validator": "^1.0.3",
     "isomorphic-fetch": "^2.1.1",
     "lodash.includes": "^3.1.3",
