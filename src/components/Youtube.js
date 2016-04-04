@@ -12,7 +12,7 @@ class Youtube extends Component {
     })
   }
   render() {
-    const {items, isFetching} = this.props
+    const { items, isFetching } = this.props
     const headerMsg = 'Loading videos...'
     return (
       <div>

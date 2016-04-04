@@ -1,8 +1,8 @@
-import fetch from 'isomorphic-fetch';
+import fetch from 'isomorphic-fetch'
 
-const REQUEST = 'youtube/REQUEST';
-const RECEIVE = 'youtube/RECEIVE';
-const REQUEST_FAILURE = 'youtube/REQUEST_FAILURE';
+const REQUEST = 'youtube/REQUEST'
+const RECEIVE = 'youtube/RECEIVE'
+const REQUEST_FAILURE = 'youtube/REQUEST_FAILURE'
 
 const initialState = {
   items: [],
@@ -11,10 +11,10 @@ const initialState = {
   errorMsg: null,
   reqError: false,
   onLine: true,
-};
+}
 
 function isOnLine() {
-  return navigator.onLine;
+  return navigator.onLine
 }
 
 export default function reducer(state = initialState, action = {}) {
@@ -23,22 +23,22 @@ export default function reducer(state = initialState, action = {}) {
       return {
         ...state,
         isFetching: true,
-      };
+      }
     case RECEIVE:
       return {
         ...state,
         isFetching: false,
         items: action.payload,
         lastUpdated: Date.now(),
-      };
+      }
     case REQUEST_FAILURE:
       return {
         ...state,
         reqError: true,
         errorMsg: action.payload.errorMsg,
-      };
+      }
     default:
-      return state;
+      return state
   }
 }
 
@@ -51,12 +51,12 @@ function handleAsyncFailure(errorMsg = '') {
       errorMsg,
       onLine: isOnLine(),
     },
-  };
+  }
 }
 function requestItems() {
   return {
     type: REQUEST,
-  };
+  }
 }
 
 function fixItem({snippet: {title, thumbnails, resourceId}}) {
@@ -64,37 +64,38 @@ function fixItem({snippet: {title, thumbnails, resourceId}}) {
     title,
     thumbnail: thumbnails.default,
     videoId: resourceId.videoId,
-  };
+  }
 }
 function transformer(data) {
-  return data.items.map(fixItem);
+  return data.items.map(fixItem)
 }
 function receiveItems(data) {
   // @TODO Look for errors in the response.
   if (data.reqError) {
-    return handleAsyncFailure(data.errorMsg);
+    return handleAsyncFailure(data.errorMsg)
   }
   return {
     type: RECEIVE,
     payload: transformer(data),
-  };
+  }
 }
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
-    return response.json();
+    return response.json()
   } else if (response.status === 400) {
+    console.log('google api 400 error')
     return {
       reqError: true,
       errorMsg: 'Invalid request.',
-    };
+    }
   }
   // Probably a server error.
   return {
     errorMsg: response.statusText,
     statusCode: response.status,
     reqError: true,
-  };
+  }
 }
 
 // Get the id for a username
@@ -105,20 +106,20 @@ function checkStatus(response) {
 // GET https://www.googleapis.com/youtube/v3/playlists?part=snippet&channelId=UC1dLyBjCAFz9tNxEr47zIEA&key={YOUR_API_KEY}
 // https://www.googleapis.com/youtube/v3/playlists?
 export function fetchItems({playlistId, key, maxResults}) {
-  const url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&';
-  const args = `playlistId=${playlistId}&key=${key}&maxResults=${maxResults}`;
+  const url = 'https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&'
+  const args = `playlistId=${playlistId}&key=${key}&maxResults=${maxResults}`
   return dispatch => {
     if (!isOnLine()) {
-      dispatch(handleAsyncFailure('It looks like you are offline.'));
-      return;
+      dispatch(handleAsyncFailure('It looks like you are offline.'))
+      return
     }
     // if (asyncValidating) {
-    //   return;
+    //   return
     // }
-    dispatch(requestItems());
+    dispatch(requestItems())
     fetch(url + args)
       .then(checkStatus)
       .then(json => dispatch(receiveItems(json)))
-      .catch((err) => dispatch(handleAsyncFailure(err)));
-  };
+      .catch(err => dispatch(handleAsyncFailure(err)))
+  }
 }

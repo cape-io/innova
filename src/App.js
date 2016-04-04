@@ -14,7 +14,6 @@ function mapStateToProps(state) {
 class App extends Component {
   render() {
     const { album, frontPage } = this.props
-    console.log(album, frontPage)
     return (
       <div className="container">
         { frontPage && <Youtube /> }

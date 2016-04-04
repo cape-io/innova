@@ -11,19 +11,19 @@ domready( () => {
   const initialState = { settings: {} }
   // This is created by drupal.
   if (devEnv) {
-    initialState.settings.frontPage = true
-    initialState.settings.album = {
-      soundcloudTrack: 'https://soundcloud.com/innovadotmu/epic-soda'
-    }
+    window.Drupal = { settings: {
+      album: {
+        soundcloudTrack: 'https://soundcloud.com/innovadotmu/epic-soda'
+      },
+      frontPage: true
+    } }
   }
-  else {
-    initialState.settings.frontPage = window.Drupal.frontPage || false
-    initialState.settings.album = window.Drupal.settings.album || {}
-  }
-
+  const { album, frontPage } = window.Drupal.settings
+  initialState.settings.frontPage = frontPage || false
+  initialState.settings.album = album || {}
+  console.log(initialState)
   const store = configureStore(initialState)
-
-  console.log('domready', initialState)
+  window.app = { getState: store.getState }
   render(
     <Provider store={store}>
       <App />
@@ -31,11 +31,3 @@ domready( () => {
     document.getElementById('react')
   )
 })
-
-if (process.env.NODE_ENV !== 'production') {
-  // Use require because imports can't be conditional.
-  // In production, you should ensure process.env.NODE_ENV
-  // is envified so that Uglify can eliminate this
-  // module and its dependencies as dead code.
-  require('./createDevToolsWindow')(store)
-}
